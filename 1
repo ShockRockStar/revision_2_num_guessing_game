@@ -1,0 +1,39 @@
+import random
+import sys
+
+
+NUMBERS=random.randint(1,10)
+
+
+print("Welcome to the {GUESSING GAME} \n \n \nIn this game a player will guess an integer value from 1-10. If they guess correctly they will win the game!\n \n \n")
+proceed=input("Enter [Y]es, or [N]o to play!\n\n")
+while True:
+  if proceed.lower() =="y" or proceed.lower()=="yes":
+    break
+  elif proceed.lower()=="n" or proceed.lower()=="no":
+    sys.exit("Goodbye,\nthe\ngame\nhas\nnow\nended.")
+  else: 
+    sys.exit("Sorry I didn't get that. If you want to play, please type a YES, yes, Y, a (y), or No, NO, N, or (n) See ya next time.")
+    break
+
+user_name=input("\nWhat is your name: ")
+
+guesses=0
+while True:
+  
+  users_guess=input("\n\n**{}, try to guess the number from 1 to 10 **".format(user_name))
+  
+  try:
+    guess=int(users_guess)
+    guesses+=1
+    if guess==NUMBERS:
+      print("\n**Wow, you guessed right! Good going!**\n\n")
+      break
+    elif guess > NUMBERS:
+      print("You're too high! Enter something lower.")
+    elif guess < NUMBERS:
+      print("You're too low! Enter a higher number!!")
+    
+  except ValueError as err:
+    print("Uh oh! It looks like you should have entered a whole number. {}. Please try again.".format(err))
+print("You got the correct number, the game is now over. \n\nIt took you {} attempts to get the correct guess. \n\nPlay again soon! ".format(guesses))
